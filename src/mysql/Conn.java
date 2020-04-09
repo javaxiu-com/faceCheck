@@ -19,7 +19,7 @@ public Conn() {
  */
 public ResultSet executeQuery(String sql) {
 	try {
-		conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/finance?useSSL=false&serverTimezone=UTC","root","123456");
+		conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/gyhqq_xyz_finance?useSSL=false&serverTimezone=UTC","root","123456");
 		stmt = conn.createStatement();
 		rs=stmt.executeQuery(sql);
 	} catch (SQLException ex){
@@ -34,7 +34,7 @@ public ResultSet executeQuery(String sql) {
 public int executeUpdate(String sql) {
 	int result = 0;
 	try {
-		conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/finance?useSSL=false&serverTimezone=UTC","root","123456");
+		conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/gyhqq_xyz_finance?useSSL=false&serverTimezone=UTC","root","123456");
 		stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		result=stmt.executeUpdate(sql);
 	} catch (SQLException ex){

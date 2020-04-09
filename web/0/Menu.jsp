@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr><td class="menutd"><a href="user.jsp" target="setFrame" class="menuurl">查看个人主页</a></td></tr>
 <tr><td class="menutd"><a href="updateuser.jsp" target="setFrame" class="menuurl">修改个人信息</a></td></tr>
 <tr><td class="menutd">人脸考勤统计</td></tr>
-<tr><td class="menutd"><a href="http://localhost:8080/faceCheck_war_exploded/Boos/upJournal.jsp" target="setFrame" class="menuurl">考勤统计信息</a></td></tr>
+<tr><td class="menutd"><a href="http://java.gyhqq.xyz/faceCheck/Boos/upJournal.jsp" target="setFrame" class="menuurl">考勤统计信息</a></td></tr>
 <tr><td colspan="4" class="menutd"><a id=exit href="../login.jsp" target="_top" class="menuurl">登出系统</a></td></tr>
 </table>
 <script>
