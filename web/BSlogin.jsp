@@ -1,4 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
+%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -20,7 +30,8 @@
 <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="password" onpaste="return false" ondragenter="return false"  style="ime-mode:disabled" name="password" size=20 placeholder="密码" class="login-input"/>
 <br><br>&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="submit" name="log" value="登录" class="login-submit" />
+<input type="submit" name="log" value="登录" class="login-submit" /><br>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" name="log" value="BOOS注册" class="login-submit" onclick='window.open("<%=basePath%>Boos/insertBOOS.jsp")' />
 </form>
 </div>
 <div id="log-footer">

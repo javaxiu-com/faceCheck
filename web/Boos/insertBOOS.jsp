@@ -44,16 +44,16 @@ String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
   </head>
-  <body class="usin">增加BOOS用户
+  <body class="usin">增加BOOS用户：
    <div class="usinn">
 <form id="form1" name="form1" method="post" action="./Boos/insertBOOS.jsp?action=insert">
 <table>
 <tr>
-<td>BOOS名字</td><td><input type="text" name="Bname" id="Bname" /></td>
+<td>BOOS用户名字：</td><td><input type="text" name="Bname" id="Bname" /></td>
 </tr>
 <tr><td></td></tr>  <tr><td></td></tr>
 <tr>
-<td>BOOS登陆密码</td><td><input type="password" name="Bpass" id="Bpass" /></td>
+<td>BOOS账户密码：</td><td><input type="password" name="Bpass" id="Bpass" /></td>
 </tr>
 <tr>
 <td colspan="2"><input type="submit" name="button" id="button" value="进行面部信息注册》》》" />
