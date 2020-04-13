@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="mysql.Conn"%><%@ page import="conn.mysql.*,java.sql.*,conn.User.*" %>
 <%
-String userid =(String)session.getAttribute("ST_num"); 
+String userid =(String)session.getAttribute("ST_num");
 userLogin usl =new userLogin();
 userInfo usin=new userInfo();
 usin=usl.getUser(userid);     //获取登录人的信息
@@ -27,9 +27,15 @@ else{ intPage=Integer.valueOf(strPage).intValue();
  		else{intPage=intPage;}
  	}
  %>
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -37,12 +43,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
        <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <base href="<%=basePath%>">
-    
+
     <title>My JSP 'updateWage.jsp' starting page</title>
-    
+
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
@@ -50,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+
   <body class="usin">对工资表进行管理：
        <table align="center">
 <tr><th class="wa-th">员工id</th> <th class="wa-th">员工姓名</th><th class="wa-th">员工所在部门</th>
@@ -61,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   if(intPageCount>0){
   rsu.absolute((intPage-1)*intPageSize+1);
   i=0;
-  while(i<intPageSize &&!rsu.isAfterLast()){ 
+  while(i<intPageSize &&!rsu.isAfterLast()){
   %>
    <tr class="usertb-tr" align="center"><td><%=rsu.getString(1) %></td><td><%=rsu.getString(2) %></td><td><%=rsu.getString(3) %></td>
    <td><%=rsu.getString(4) %></td><td><%=rsu.getString(5) %></td><td><%=rsu.getString(6) %></td>
@@ -69,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <td><%=rsu.getString(10) %></td>
     <td><a href="./1/upWage.jsp?id=<%=rsu.getString(1) %>" class="tb-url">编辑</a>|<a href="./1/DeWage.jsp?id=<%=rsu.getString(1) %>" class="tb-url">删除</a></td>
     </tr>
-  <% 
+  <%
    rsu.next();i++;}
    } %>
    </table>

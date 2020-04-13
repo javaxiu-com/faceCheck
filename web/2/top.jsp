@@ -1,7 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -43,11 +49,11 @@ var speed2=-0.02;
 
 var lingrad = ctx.createLinearGradient(0,0,width,0);
 lingrad.addColorStop(0, 'rgba(220,226,236,0.8)');
-lingrad.addColorStop(1, 'rgba(176,196,222,1)');  
+lingrad.addColorStop(1, 'rgba(176,196,222,1)');
 
 var lingrad2 = ctx.createLinearGradient(0,0,width,0);
 lingrad2.addColorStop(0,'rgba(176,196,222,1)');
-lingrad2.addColorStop(1, 'rgba(220,226,236,0.8)'); 
+lingrad2.addColorStop(1, 'rgba(220,226,236,0.8)');
 
 (function draw(){
   window.requestAnimationFrame(draw);

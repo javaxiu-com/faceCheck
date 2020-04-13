@@ -22,26 +22,32 @@ else{ intPage=Integer.valueOf(strPage).intValue();
  		else{intPage=intPage;}
  	}
  %>
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-   <link rel="stylesheet" type="text/css" href="../css/styles.css">	
+   <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <base href="<%=basePath%>">
     <title>My JSP 'showUser.jsp' starting page</title>
-    
+
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 
   </head>
-  
+
   <body class="usin" >
   对员工账户进行操作：
   <table  class="user-table">
@@ -73,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <td class="usertb-td"><%=rsu.getString(15) %></td><td class="usertb-td"><%=rsu.getString(16) %></td>
    <td class="usertb-td"><%=rsu.getString(17) %></td><td class="usertb-td"><%=rsu.getString(18) %></td>
    <td ><a href="./Boos/upUaer.jsp?id=<%=rsu.getString(1) %>" class="tb-url">编辑</a>|<a href="./Boos/DeUs.jsp?id=<%=rsu.getString(1) %>" class="tb-url">删除</a></td>
-   </tr><% 
+   </tr><%
    rsu.next();i++;}
    } %>
   </table>

@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@page import="conn.User.*"%>
- <% String userid =(String)session.getAttribute("ST_num"); 
+ <% String userid =(String)session.getAttribute("ST_num");
     userLogin usl =new userLogin();
  if (userid == null||userid.length()==0)
  {
@@ -20,11 +20,17 @@
   case "3":
       out.print("<script>alert('您没有访问此页面的权限，点击确定返回！'); window.location='../3/3power.jsp' </script>");
     break;
-}} 
+}}
  %>
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -32,10 +38,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
      <title>员工个人主页</title>
-    
+
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--

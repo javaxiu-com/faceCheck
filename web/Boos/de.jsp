@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="conn.Boos.*,conn.Journal.*,faceID.faceDel" %>
 <%@page import="java.text.SimpleDateFormat"%>
- <% 
+ <%
   request.setCharacterEncoding("UTF-8");
   String boosid =(String)session.getAttribute("boosid");
   boosLogin bsl=new boosLogin();
@@ -15,26 +15,32 @@
    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
  String now = df.format(d);
    joi.setJO_time(now);joi.setJO_staff(boosid);joi.setJO_things("删除账户"+request.getParameter("id"));joi.setJO_remark("无");
- jo.insert(joi); 
+ jo.insert(joi);
      out.print("<script>alert('BOOS账户删除成功'); window.location='./deteBOOS.jsp' </script>");}
      else{
      out.print("<script>alert('BOOS账户删除失败'); window.location='./deteBOOS.jsp' </script>");}
 %>
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
-    
+
     <title>My JSP 'de.jsp' starting page</title>
-    
+
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
@@ -42,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+
   <body>
   </body>
 </html>

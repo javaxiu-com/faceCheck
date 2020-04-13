@@ -37,7 +37,7 @@ usi.setST_post(request.getParameter("po"));
 usl.insert(usi);
 String usid=usl.getuserID(name);
  joi.setJO_time(now);joi.setJO_staff(boosid);joi.setJO_things("添加部门默认员工信息");joi.setJO_remark("无");
- jo.insert(joi); 
+ jo.insert(joi);
  wain.setWA_num(usid);wain.setWA_name(name);wain.setWA_department(request.getParameter("depa"));
  wain.setWA_post(request.getParameter("po"));wain.setWA_actual("0");wain.setWA_fine("0");wain.setWA_overtime("0");
  wain.setWA_remark(" ");wain.setWA_reward("0");wain.setWA_wages("0");
@@ -45,21 +45,27 @@ String usid=usl.getuserID(name);
   session.setAttribute("userid",usid);
  out.print("<script>alert('账户添加成功，点击确定进行面部信息注册'); window.location='./insertDeno1fa.jsp' </script>");
  } %>
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-        <link rel="stylesheet" type="text/css" href="../css/styles.css">	
+        <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <base href="<%=basePath%>">
     <title>My JSP 'insertDeno1.jsp' starting page</title>
-    
+
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
@@ -67,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+
   <body class="usin">添加部门的管理者账户:<div class="inuser">
 <form id="form1" name="form1" method="post" action="./Boos/insertDeno1.jsp?action=insertno1">
 <table>

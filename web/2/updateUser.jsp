@@ -2,7 +2,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="conn.mysql.*,java.sql.*,conn.User.*" %>
 <%
-String userid =(String)session.getAttribute("ST_num"); 
+String userid =(String)session.getAttribute("ST_num");
 userLogin usl =new userLogin();
 userInfo usin=new userInfo();
 usin=usl.getUser(userid);     //获取登录人的信息
@@ -28,22 +28,28 @@ else{ intPage=Integer.valueOf(strPage).intValue();
  		else{intPage=intPage;}
  	}
  %>
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-     <link rel="stylesheet" type="text/css" href="../css/styles.css">	
+     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <base href="<%=basePath%>">
-    
+
     <title>My JSP 'showUser.jsp' starting page</title>
-    
+
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
@@ -51,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+
   <body class="usin" >
   <table class="user-table">
   <tr><th class="usertb-th" title="员工ID">员工ID</th><th class="usertb-th" title="员工名字">员工名字</th><th class="usertb-th" title="员工登陆密码">员工登陆密码</th>
@@ -82,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <td class="usertb-td"><%=rsu.getString(15) %></td><td class="usertb-td"><%=rsu.getString(16) %></td>
    <td class="usertb-td"><%=rsu.getString(18) %></td>
    <td><a href="./2/upUaer.jsp?id=<%=rsu.getString(1) %>" class="tb-url">编辑</a>|<a href="./2/DeUs.jsp?id=<%=rsu.getString(1) %>" class="tb-url">删除</a></td>
-   </tr><% 
+   </tr><%
    rsu.next();i++;}
    } %>
   </table>

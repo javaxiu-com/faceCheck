@@ -19,13 +19,19 @@
 	poi.setPO_remark(request.getParameter("rema"));
 	po.update(poi);
 	 joi.setJO_time(now);joi.setJO_staff(boosid);joi.setJO_things("修改岗位信息");joi.setJO_remark("无");
- jo.insert(joi); 
+ jo.insert(joi);
  out.print("<script>alert('岗位修改成功'); window.location='./upfatePost.jsp' </script>");
 }
 	%>
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -33,16 +39,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
    <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <base href="<%=basePath%>">
-    
+
     <title>My JSP 'upPost.jsp' starting page</title>
-    
+
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
   </head>
-  
+
   <body class="usin">修改岗位信息：<div class="inuser">
 <% PostInfo poino=po.getonePO(request.getParameter("id")); %>
 

@@ -1,16 +1,23 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="../css/styles.css">
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 %>
+
 <table width="100%" border="0">
 <tr><td colspan="4">人脸识别考勤系统</td></tr>
-<tr><td class="menutd">员工个人信息</a></td></tr><!-- target是跳转添加的，必须不然会重新跳转到新的页面 -->
+<tr><td class="menutd">员工个人信息</td></tr><!-- target是跳转添加的，必须不然会重新跳转到新的页面 -->
 <tr><td class="menutd"><a href="user.jsp" target="setFrame" class="menuurl">查看个人主页</a></td></tr>
 <tr><td class="menutd"><a href="../2/upmyuser.jsp" target="setFrame" class="menuurl">修改个人信息</a></td></tr>
 <tr><td class="menutd">人脸考勤统计</td></tr>
-<tr><td class="menutd"><a href="http://java.gyhqq.xyz/faceCheck/Boos/upJournal.jsp" target="setFrame" class="menuurl">考勤统计信息</a></td></tr>
+<tr><td class="menutd"><a href="<%=basePath%>Boos/upJournal.jsp" target="setFrame" class="menuurl">考勤统计信息</a></td></tr>
 <tr><td class="menutd">员工管理</td></tr>
 <tr><td class="menutd"><a href="../2/updateUser.jsp" target="setFrame" class="menuurl">更新员工信息</a></td></tr>
 <tr><td class="menutd"><a href="../2/insertUser.jsp" target="setFrame" class="menuurl">添加员工信息</a></td></tr>

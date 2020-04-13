@@ -19,24 +19,30 @@ bsi.setBOOS_name(request.getParameter("Bname"));
 bsi.setBOOS_password(request.getParameter("Bpass"));
 bsl.update(bsi);
  joi.setJO_time(now);joi.setJO_staff(boosid);joi.setJO_things("boos修改账户信息");joi.setJO_remark("无");
- jo.insert(joi); 
+ jo.insert(joi);
  out.print("<script>alert('BOOS账户修改成功'); window.location='./updateBOOS.jsp' </script>");
 }
  %>
+<%--本地测试时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
+<%--%>--%>
+<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">	
-    <base href="<%=basePath%>">    
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <base href="<%=basePath%>">
     <title>My JSP 'updateBOOS.jsp' starting page</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
@@ -44,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
   </head>
-  
+
   <body class="usin">
   修改个人信息:
   <div class="usinn">

@@ -12,5 +12,6 @@
   </head>
   <body>
   <a>欢迎~~</a>
+  <jsp:forward page="/login.jsp"></jsp:forward>
   </body>
 </html>
