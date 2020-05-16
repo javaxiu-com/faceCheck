@@ -27,16 +27,18 @@ else{
 out.print("<script>alert('添加失败,请确保面部信息显示在人脸框中，并避免周围人的面部信息显示在人脸框！！！'); window.location='insertuserfa.jsp' </script>");
 }
 }%>
-<%--本地测试时:--%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String serverName = request.getServerName();
+    String path = request.getContextPath();
+    String basePath = "";
+    if (serverName.equals("localhost")) {
+        /*本地测试时*/
+        basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    } else {
+        /*线上运行时*/
+        basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
+    }
 %>
-<%--线上运行时:--%>
-<%--<%--%>
-<%--String path = request.getContextPath();--%>
-<%--String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";--%>
-<%--%>--%>
 
  <!DOCTYPE html>
   <html>

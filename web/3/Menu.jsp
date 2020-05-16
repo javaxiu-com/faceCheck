@@ -1,15 +1,17 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="../css/styles.css">
-<%--本地测试时:--%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String serverName = request.getServerName();
+    String path = request.getContextPath();
+    String basePath = "";
+    if (serverName.equals("localhost")) {
+        /*本地测试时*/
+        basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    } else {
+        /*线上运行时*/
+        basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
+    }
 %>
-<%--线上运行时:--%>
-<%--<%--%>
-<%--String path = request.getContextPath();--%>
-<%--String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";--%>
-<%--%>--%>
 
 <table width="100%" border="0">
 <tr><td colspan="4">人脸识别考勤系统</td></tr>

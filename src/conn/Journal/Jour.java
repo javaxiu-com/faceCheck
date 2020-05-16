@@ -22,6 +22,7 @@ public class Jour {
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		String format = formatter.format(date)+" 00:00:00";
+		String format1 = formatter.format(date)+" 23:59:59";
 		String startFormat = formatter.format(date)+" 09:00:00";
 		String endFormat = formatter.format(date)+" 18:00:00";
 		String overtimeFormat = formatter.format(date)+" 20:00:00";
@@ -31,7 +32,7 @@ public class Jour {
 		String endformat1 = formatters.format(date)+"-31 00:00:00";
 		//是否是首次打卡
 		List<JournalInfo> list =new ArrayList<JournalInfo>();
-		String sql1="select * from journal where JO_staff="+"'"+info.getJO_staff()+"'"+"and JO_time>="+"'"+format+"'"+"and JO_remark='1'";
+		String sql1="select * from journal where JO_staff="+"'"+info.getJO_staff()+"'"+"and JO_time>="+"'"+format+"'"+"and JO_time<="+"'"+format1+"'"+"and JO_remark='1'";
 		ResultSet rs=conn.executeQuery(sql1);
 		while (rs.next()) {
 			JournalInfo journalInfo = new JournalInfo();
@@ -50,6 +51,7 @@ public class Jour {
 			int JO_pay = 0;
 			if (h > 0) {
 				JO_status = "迟到";
+				JO_pay = -5;
 			}
 			if (i > 0 && j < 0) {
 				JO_status = "正常";

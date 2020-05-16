@@ -22,16 +22,18 @@ bsl.insert(bsi);
  session.setAttribute("inboosid", a);
   out.print("<script>alert('BOOS账户添加成功,点击确定进行面部信息添加'); window.location='./inBOOSFice.jsp' </script>");
 }%>
-<%--本地测试时:--%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String serverName = request.getServerName();
+    String path = request.getContextPath();
+    String basePath = "";
+    if (serverName.equals("localhost")) {
+        /*本地测试时*/
+        basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    } else {
+        /*线上运行时*/
+        basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
+    }
 %>
-<%--线上运行时:--%>
-<%--<%--%>
-<%--String path = request.getContextPath();--%>
-<%--String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";--%>
-<%--%>--%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>

@@ -23,16 +23,18 @@
     else{intPage=intPage;}
   }
 %>
-<%--本地测试时:--%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+  String serverName = request.getServerName();
+  String path = request.getContextPath();
+  String basePath = "";
+  if (serverName.equals("localhost")) {
+    /*本地测试时*/
+    basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+  } else {
+    /*线上运行时*/
+    basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
+  }
 %>
-<%--线上运行时:--%>
-<%--<%--%>
-<%--  String path = request.getContextPath();--%>
-<%--  String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";--%>
-<%--%>--%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -49,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </head>
 
-<body class="usin">人脸考勤统计信息：
+<body class="usin">人脸考勤绩效信息：
 <table align="center">
   <tr><th class="dep-th">id</th> <th class="dep-th">上班时间</th><th class="dep-th">下班时间</th>
     <th class="dep-th">打卡人</th><th class="dep-th">迟到早退</th><th class="dep-th">薪资扣罚</th></tr>

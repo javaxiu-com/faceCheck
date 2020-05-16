@@ -1,15 +1,17 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="../css/styles.css">
-<%--本地测试时:--%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String serverName = request.getServerName();
+    String path = request.getContextPath();
+    String basePath = "";
+    if (serverName.equals("localhost")) {
+        /*本地测试时*/
+        basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    } else {
+        /*线上运行时*/
+        basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
+    }
 %>
-<%--线上运行时:--%>
-<%--<%--%>
-<%--String path = request.getContextPath();--%>
-<%--String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";--%>
-<%--%>--%>
 <table width="100%" border="0">
 <tr><td colspan="4">人脸识别考勤系统</td></tr>
 <tr><td class="menutd">个人信息</td></tr><!-- target是跳转添加的，必须不然会重新跳转到新的页面 -->

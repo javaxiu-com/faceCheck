@@ -22,16 +22,18 @@ else{ intPage=Integer.valueOf(strPage).intValue();
  		else{intPage=intPage;}
  	}
  %>
-<%--本地测试时:--%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String serverName = request.getServerName();
+    String path = request.getContextPath();
+    String basePath = "";
+    if (serverName.equals("localhost")) {
+        /*本地测试时*/
+        basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    } else {
+        /*线上运行时*/
+        basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
+    }
 %>
-<%--线上运行时:--%>
-<%--<%--%>
-<%--String path = request.getContextPath();--%>
-<%--String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";--%>
-<%--%>--%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -48,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
 
-  <body class="usin">对工资表进行管理：
+  <body class="usin">对考勤工资进行管理：
        <table align="center">
    <tr><th class="wa-th">员工id</th> <th class="wa-th">员工姓名</th><th class="wa-th">员工所在部门</th>
    <th class="wa-th">员工所在岗位</th><th class="wa-th">员工基本工资</th><th class="wa-th">总计奖励金额</th>
