@@ -18,15 +18,15 @@ String now = df.format(d);
      out.print("<script>alert('部门删除失败'); window.location='./updateDepar.jsp' </script>");}
 	%>
 <%--本地测试时:--%>
-<%--<%--%>
-<%--String path = request.getContextPath();--%>
-<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
-<%--%>--%>
-<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%--线上运行时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";--%>
+<%--%>--%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

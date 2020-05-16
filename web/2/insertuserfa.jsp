@@ -28,15 +28,15 @@ out.print("<script>alert('添加失败,请确保面部信息显示在人脸框�
 }
 }%>
 <%--本地测试时:--%>
-<%--<%--%>
-<%--String path = request.getContextPath();--%>
-<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
-<%--%>--%>
-<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%--线上运行时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";--%>
+<%--%>--%>
 
  <!DOCTYPE html>
   <html>

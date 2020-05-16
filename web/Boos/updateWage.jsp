@@ -23,15 +23,15 @@ else{ intPage=Integer.valueOf(strPage).intValue();
  	}
  %>
 <%--本地测试时:--%>
-<%--<%--%>
-<%--String path = request.getContextPath();--%>
-<%--String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";--%>
-<%--%>--%>
-<%--线上运行时:--%>
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%--线上运行时:--%>
+<%--<%--%>
+<%--String path = request.getContextPath();--%>
+<%--String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";--%>
+<%--%>--%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -51,8 +51,8 @@ String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
   <body class="usin">对工资表进行管理：
        <table align="center">
    <tr><th class="wa-th">员工id</th> <th class="wa-th">员工姓名</th><th class="wa-th">员工所在部门</th>
-   <th class="wa-th">员工所在岗位</th><th class="wa-th">员工基本工资</th><th class="wa-th">员工奖励金额</th>
-   <th class="wa-th">员工加班时长</th><th class="wa-th">员工罚款金额</th><th class="wa-th">员工实际发放金额</th>
+   <th class="wa-th">员工所在岗位</th><th class="wa-th">员工基本工资</th><th class="wa-th">总计奖励金额</th>
+   <th class="wa-th">员工加班时长</th><th class="wa-th">总计罚款金额</th><th class="wa-th">实际发放工资</th>
    <th class="wa-th">备注</th><th>操作</th></tr>
     <%
   if(intPageCount>0){
@@ -62,9 +62,9 @@ String basePath = request.getScheme()+"s://"+request.getServerName()+path+"/";
   %>
    <tr class="usertb-tr" align="center"><td><%=rsu.getString(1) %></td><td><%=rsu.getString(2) %></td><td><%=rsu.getString(3) %></td>
    <td><%=rsu.getString(4) %></td><td><%=rsu.getString(5) %></td><td><%=rsu.getString(6) %></td>
-   <td><%=rsu.getString(7) %></td><td><%=rsu.getString(8) %></td><td><%=rsu.getString(9) %></td>
+   <td><%=rsu.getString(7) %></td><td><%=rsu.getString(8) %></td><td><%=Integer.parseInt(rsu.getString(5))+Integer.parseInt(rsu.getString(6))+Integer.parseInt(rsu.getString(8)) %></td>
    <td><%=rsu.getString(10) %></td>
-    <td><a href="./Boos/upWage.jsp?id=<%=rsu.getString(1) %>" class="tb-url">编辑</a>|<a href="./Boos/DeWage.jsp?id=<%=rsu.getString(1) %>" class="tb-url">删除</a></td>
+    <td><a href="./Boos/upWage.jsp?id=<%=rsu.getString(1) %>" class="tb-url">调整薪资</a>|<a href="./Boos/DeWage.jsp?id=<%=rsu.getString(1) %>" class="tb-url">删除</a></td>
     </tr>
   <%
    rsu.next();i++;}

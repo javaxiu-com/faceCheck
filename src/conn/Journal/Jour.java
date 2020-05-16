@@ -22,6 +22,13 @@ public class Jour {
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		String format = formatter.format(date)+" 00:00:00";
+		String startFormat = formatter.format(date)+" 09:00:00";
+		String endFormat = formatter.format(date)+" 18:00:00";
+		String overtimeFormat = formatter.format(date)+" 20:00:00";
+		//找当前月
+		SimpleDateFormat formatters = new SimpleDateFormat("yyyy-MM");
+		String startformat1 = formatters.format(date)+"-01 00:00:00";
+		String endformat1 = formatters.format(date)+"-31 00:00:00";
 		//是否是首次打卡
 		List<JournalInfo> list =new ArrayList<JournalInfo>();
 		String sql1="select * from journal where JO_staff="+"'"+info.getJO_staff()+"'"+"and JO_time>="+"'"+format+"'"+"and JO_remark='1'";
@@ -35,10 +42,47 @@ public class Jour {
 		conn.close();
 		if (list.size() > 0) {
 			//非首次打卡(下班卡)
-			String sql="update journal set JO_endtime="+"'"+info.getJO_time()+"'"+"where JO_staff="+"'"+info.getJO_staff()+"'"+"and JO_remark='1'";
+			String jo_time = info.getJO_time();
+			int h = format.compareTo(startFormat);//当前时间大于下班时间
+			int i = format.compareTo(endFormat);//当前时间大于下班时间
+			int j = format.compareTo(overtimeFormat);//当前时间大于加班下班时间
+			String JO_status = "";
+			int JO_pay = 0;
+			if (h > 0) {
+				JO_status = "迟到";
+			}
+			if (i > 0 && j < 0) {
+				JO_status = "正常";
+			}
+			if (j > 0 && j > 0) {
+				JO_status = "加班";
+				JO_pay = 5;
+			}
+			if (i < 0) {
+				JO_status = "早退";
+				JO_pay = -5;
+			}
+			String sql="update journal set JO_endtime="+"'"+info.getJO_time()+"'"+",JO_status="+"'"+JO_status+"'"+",JO_pay="+"'"+JO_pay+"'"+" where JO_staff="+"'"+info.getJO_staff()+"'"+"and JO_remark='1'";
 			int result=0;
 			result=conn.executeUpdate(sql);
 			conn.close();
+			//更新工资表
+			String sqls="select * from journal where JO_staff="+"'"+info.getJO_staff()+"'"+"and JO_time>="+"'"+startformat1+"'"+"and JO_time<="+"'"+endformat1+"'"+"and JO_remark='1'";
+			ResultSet rs1=conn.executeQuery(sqls);
+			int a = 0;
+			while (rs1.next()) {
+				a = a + Integer.parseInt(rs1.getString(8));
+			}
+			if (a > 0) {
+				String sqlss="update wages set WA_reward="+"'"+a+"'"+" where WA_num="+"'"+info.getJO_staff()+"'";
+				int resultss=conn.executeUpdate(sqlss);
+				conn.close();
+			}
+			if (a < 0) {
+				String sqlss="update wages set WA_fine="+"'"+a+"'"+" where WA_num="+"'"+info.getJO_staff()+"'";
+				int resultss=conn.executeUpdate(sqlss);
+				conn.close();
+			}
 			return result;
 		}
 		//首次打卡(上班卡)

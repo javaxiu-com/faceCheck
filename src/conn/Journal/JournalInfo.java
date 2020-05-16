@@ -7,6 +7,21 @@ public class JournalInfo {
 	private String JO_staff; //操作人
 	private String JO_things; //操作事务
 	private String JO_remark; //备注
+	private String JO_status; //考勤状态
+	private int JO_pay; //薪资扣罚
+	public String getJO_status() {
+		return JO_status;
+	}
+	public int getJO_pay() {
+		return JO_pay;
+	}
+	public void setJO_status(String jO_status) {
+		JO_status = jO_status;
+	}
+	public void setJO_pay(int jO_pay) {
+		JO_pay = jO_pay;
+	}
+	//
 	public String getJO_id() {
 		return JO_id;
 	}
