@@ -29,7 +29,7 @@ public class Jour {
 		//找当前月
 		SimpleDateFormat formatters = new SimpleDateFormat("yyyy-MM");
 		String startformat1 = formatters.format(date)+"-01 00:00:00";
-		String endformat1 = formatters.format(date)+"-31 00:00:00";
+		String endformat1 = formatters.format(date)+"-30 00:00:00";
 		//是否是首次打卡
 		List<JournalInfo> list =new ArrayList<JournalInfo>();
 		String sql1="select * from journal where JO_staff="+"'"+info.getJO_staff()+"'"+"and JO_time>="+"'"+format+"'"+"and JO_time<="+"'"+format1+"'"+"and JO_remark='1'";
