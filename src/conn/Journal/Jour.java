@@ -20,6 +20,8 @@ public class Jour {
 	 */
 	public int insert(JournalInfo info) throws SQLException {
 		Date date = new Date();
+		SimpleDateFormat presentFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String presentFormat = presentFormatter.format(date);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		String format = formatter.format(date)+" 00:00:00";
 		String format1 = formatter.format(date)+" 23:59:59";
@@ -44,9 +46,9 @@ public class Jour {
 		if (list.size() > 0) {
 			//非首次打卡(下班卡)
 			String jo_time = info.getJO_time();
-			int h = format.compareTo(startFormat);//当前时间大于下班时间
-			int i = format.compareTo(endFormat);//当前时间大于下班时间
-			int j = format.compareTo(overtimeFormat);//当前时间大于加班下班时间
+			int h = presentFormat.compareTo(startFormat);//当前时间大于下班时间
+			int i = presentFormat.compareTo(endFormat);//当前时间大于下班时间
+			int j = presentFormat.compareTo(overtimeFormat);//当前时间大于加班下班时间
 			String JO_status = "";
 			int JO_pay = 0;
 			if (h > 0) {
